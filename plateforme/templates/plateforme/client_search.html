@@ -115,7 +115,7 @@
                        {{ client.id }} 
                       </a>
                     </td>
-                    <td align="center"><img src="{{ client.document_url|default_if_none:'#' }}" class="img-circle" style="height: 15px; width: 15px;"></td>
+                    <td align="center"><img src="{{ client.documents_url|default_if_none:'#' }}" class="img-circle" style="height: 15px; width: 15px;"></td>
                     <td>
                         {{ client.nom }} {{ client.prenom }}
                     </td>
