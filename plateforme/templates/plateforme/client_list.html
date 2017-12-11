@@ -1,0 +1,132 @@
+{% extends 'plateforme/base.html' %}
+
+
+{% block title %}LISTE CLIENTS{% endblock %}
+
+
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Etats<br>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="{% url 'plateforme:accueil' %}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">Etats</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Liste des Clients</h3><br><br>
+
+              <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <a href="{% url 'plateforme:client_search' %}" class="btn btn-primary">
+                    <i class="fa fa-search"></i>  Recherche Un client</a>
+                  </div>
+                </div>
+              </div><br><br>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover table-stripped table-condensed table-bordered">
+                <tr>
+                  <th align="center">#</th>
+                  <th align="center">Photo</th>
+                  <th align="center">Noms & Prénoms</th>
+                  <th align="center">Sexe</th>
+                  <th align="center">Date & Lieu_Naissance</th>
+                  <!--th>Nom_du_Père</th>
+                  <th>Nom_de_la_Mère</th-->
+                  <th align="center">Profession</th>
+                  <th align="center">Statut_Matrimonial</th>
+                  <!--th>Nom_Conjoint(e)</th-->
+                  <!--th>Nbre_enfants</th-->
+                  <!--th>Pays_d'Origine</th>
+                  <th>Ville_d'Origine</th-->
+                  <!--th>Ville_de_Résidence</th-->
+                  <th align="center">Lieu_de_Résidence</th>
+                  <!--th>Nationalité</th-->
+                  <th align="center">Num_CNI</th>
+                  <!--th>CNI_Délivré_Par</th>
+                  <th>Date_Délivrance_CNI</th-->
+                  <!--th>Num_Passeport</th-->
+                  <!--th>Passport_Délivré_Par</th>
+                  <th>Date_Délivrance_Passport</th-->
+                  <th align="center">Arrivé_Au_GABON</th>
+                  <!--th>Date_d'Ajout</th-->
+                  <!--th>Ajouté_Par</th-->
+                  <th align="center">Action</th>
+                </tr>
+                {% for client in clients %}
+                  <tr>
+                    <td align="center">
+                      <a href="{% url 'plateforme:client_detail' client.id %}">
+                       {{ client.id }} 
+                      </a>
+                    </td>
+                    <td align="center"><img src="{{ client.document_url|default_if_none:'#' }}" class="img-circle" style="height: 15px; width: 15px;"></td>
+                    <td align="center">
+                        {{ client.nom }} {{ client.prenom }}
+                    </td>
+                    <td align="center">{{ client.sexe }}</td>
+                    <td align="center">{{ client.date_naissance }} {{ client.lieu_naissance }}</td>
+                    <!--td>{{ client.pere }}</td>
+                    <td>{{ client.mere }}</td-->
+                    <td align="center">{{ client.profession }}</td>
+                    <td align="center">{{ client.statut }}</td>
+                    <!--td>{{ client.conjoint }}</td-->
+                    <!--td>{{ client.nbre_enfants }}</td-->
+                    <!--td>{{ client.pays_origine }}</td-->
+                    <!--td>{{ client.ville_origine }}</td>
+                    <td>{{ client.ville_residence }}</td-->
+                    <td align="center">{{ client.lieu_residence }}</td>
+                    <!--td>{{ client.nationalite }}</td-->
+                    <td align="center">{{ client.cni }}</td>
+                    <!--td>{{ client.cni_delivre_par }}</td>
+                    <td>{{ client.date_cni }}</td-->
+                    <!--td>{{ client.passport }}</td-->
+                    <!--td>{{ client.passp_delivre_par }}</td>
+                    <td>{{ client.date_passp }}</td-->
+                    <td align="center">{{ client.date_arr_gab }}</td>
+                    <!--td>{{ client.date_ajout }}</td-->
+                    <!--td>{{ client.ajoute_par }}</td-->
+                    <td align="center">
+                      <div class="btn-group" role="group" aria-label="...">
+                        <a href="{% url 'plateforme:client_update' client.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                        <a href="{% url 'plateforme:client_delete' client.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+               {% endfor %}
+              </table><br>
+              <div class="box-footer">
+                <a href="{% url 'plateforme:client_create' %}" class="btn btn-primary">Ajouter</a>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+
+</div>
+  <!-- /.content-wrapper -->
+
+{% endblock %}
+
+  

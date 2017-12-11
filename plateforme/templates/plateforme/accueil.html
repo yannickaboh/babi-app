@@ -1,0 +1,18 @@
+{% extends 'plateforme/base.html' %}
+
+
+{% block title %}Accueil{% endblock %}
+
+
+{% block content %}
+
+<!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Bienvenue!!</h1>
+        <p>La plateforme BABI Corp. est un utilitaire web qui vous permettra de faire vos recensements aisément, gérer vos données et peeut être un bon outil d'aide à la décision...</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="{% url 'plateforme:client_create' %}" role="button">Démarrez vos activités &raquo;</a>
+        </p>
+      </div>
+
+{% endblock %}

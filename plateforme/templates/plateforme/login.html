@@ -1,0 +1,31 @@
+{% extends 'plateforme/base1.html' %}
+
+
+{% block title %}Login{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4"><br><br><br>
+		<header>
+			<div class="row">
+				<h2 align="center">Action Tracking Tools <ion class="fa fa-gears"></ion></h2>
+			</div>
+		</header><br>
+		<div class="row">
+			<form method="post" novalidate>
+              {% csrf_token %}
+              {% include 'plateforme/includes/form.html' %}
+              <p>
+		        <input type="submit" value="S'identifier" class="submit btn btn-primary" title="S'identifier"/>
+		      <a href="#" title="Retrouvez votre mot de passe" class="mdp_search">Mot de passe perdu ?</a>&nbsp; || &nbsp;<a href="{% url 'plateforme:signup' %}" title="S'inscrire">Créer un nouveau compte</a></p>
+            </form>
+		</div>
+	</div>
+	<div class="col-md-4"></div>
+
+</div>
+
+{% endblock %}
