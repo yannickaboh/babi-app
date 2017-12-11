@@ -79,20 +79,20 @@
                     </td>
                     <td align="center"><img src="{{ client.documents_url|default_if_none:'#' }}" class="img-circle" style="height: 15px; width: 15px;"></td>
                     <td align="center">
-                        {{ client.nom }} {{ client.prenom }}
+                        {{ client.nom|default_if_none:"" }} {{ client.prenom|default_if_none:"" }}
                     </td>
-                    <td align="center">{{ client.sexe }}</td>
-                    <td align="center">{{ client.date_naissance }} {{ client.lieu_naissance }}</td>
+                    <td align="center">{{ client.sexe|default_if_none:"" }}</td>
+                    <td align="center">Né le {{ client.date_naissance|default_if_none:"" }} à {{ client.lieu_naissance|default_if_none:"" }}</td>
                     <!--td>{{ client.pere }}</td>
                     <td>{{ client.mere }}</td-->
-                    <td align="center">{{ client.profession }}</td>
-                    <td align="center">{{ client.statut }}</td>
+                    <td align="center">{{ client.profession|default_if_none:"" }}</td>
+                    <td align="center">{{ client.statut|default_if_none:"" }}</td>
                     <!--td>{{ client.conjoint }}</td-->
                     <!--td>{{ client.nbre_enfants }}</td-->
                     <!--td>{{ client.pays_origine }}</td-->
                     <!--td>{{ client.ville_origine }}</td>
                     <td>{{ client.ville_residence }}</td-->
-                    <td align="center">{{ client.lieu_residence }}</td>
+                    <td align="center">{{ client.lieu_residence|default_if_none:"" }}</td>
                     <!--td>{{ client.nationalite }}</td-->
                     <!--td align="center">{{ client.cni }}</td-->
                     <!--td>{{ client.cni_delivre_par }}</td>
@@ -100,7 +100,7 @@
                     <!--td>{{ client.passport }}</td-->
                     <!--td>{{ client.passp_delivre_par }}</td>
                     <td>{{ client.date_passp }}</td-->
-                    <td align="center">{{ client.date_arr_gab }}</td>
+                    <td align="center">{{ client.date_arr_gab|default_if_none:"" }}</td>
                     <!--td>{{ client.date_ajout }}</td-->
                     <!--td>{{ client.ajoute_par }}</td-->
                     <td align="center">

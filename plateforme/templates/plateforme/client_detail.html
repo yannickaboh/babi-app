@@ -64,11 +64,11 @@
 
                 <div class="col-md-4" align="center">
                   <h4>Date & Lieu de Naissance:</h4>
-                  <p><a href="">{{ client.date_naissance }} {{ client.lieu_naissance }}</a></p>
+                  <p><a href="">Né le {{ client.date_naissance }} à {{ client.lieu_naissance }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Profession:</h4>
-                  <p><a href="">{{ client.profession }}</a></p>
+                  <p><a href="">{{ client.profession|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Statut Matrimonial:</h4>
