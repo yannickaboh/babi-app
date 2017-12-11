@@ -55,7 +55,7 @@ class Client(models.Model):
 		return self.nom
 
 	@property
-	def document_url(self):
+	def documents_url(self):
 		if self.document and hasattr(self.document, 'url'):
 			return self.document.url
 			
