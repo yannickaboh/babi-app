@@ -54,6 +54,60 @@ from django.views.generic import View
 
 from .utils import render_to_pdf #created in step 4
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
+
+
+class HomeView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'plateforme/charts.html', {"customers": 10})
+
+
+def get_data(request, *args, **kwargs):
+    data = {
+        "sales": 100,
+        "customers": 10,
+    }
+    return JsonResponse(data) # http response
+
+
+
+
+class ChartData(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        clients = Client.objects.all().count()
+        labels = ["Clients", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        default_items = [clients, ]
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return render(request, 'plateforme/charts.html', data)
+
+
+
+
+def password_reset(request):
+    return render(request, 'plateforme/registration/password_reset_form.html', {})
+
+def password_reset_done(request):
+    return render(request, 'plateforme/registration/password_reset_done.html', {})
+
+def password_reset_email(request):
+    return render(request, 'plateforme/registration/password_reset_email.html', {})
+
+def password_reset_confirm(request):
+    return render(request, 'plateforme/registration/password_reset_confirm.html', {})
+
+def password_reset_complete(request):
+    return render(request, 'plateforme/registration/password_reset_complete.html', {})
+
+
 class GeneratePDF(View):
     def get(self, request, *args, **kwargs):
         clients = Client.objects.all()

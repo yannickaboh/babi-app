@@ -13,7 +13,7 @@ class Client(models.Model):
 	nom = models.CharField(max_length=255, blank=True, null=True, verbose_name="Nom")
 	prenom = models.CharField(max_length=255, blank=True, null=True, verbose_name="Prénom")
 	sexe = models.CharField(max_length=255, blank=True, null=True, verbose_name="Sexe")
-	document = models.FileField(upload_to='photos/', blank=True, null=True, verbose_name="Photo")
+	document = models.FileField(upload_to='photos/', null=True, verbose_name="Photo")
 	date_naissance = models.DateField(blank=True, null=True, verbose_name="Date de Naissance")
 	lieu_naissance = models.CharField(max_length=255, blank=True, null=True, verbose_name="Lieu")
 

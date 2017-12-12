@@ -12,7 +12,9 @@ from plateforme import views
 from .filters import ClientFilter
 from django_filters.views import FilterView
 
-from .views import GeneratePDF
+from .views import GeneratePDF, ChartData, get_data, HomeView
+
+from django.contrib.auth import views as auth_views
 
 app_name = 'plateforme'
 
@@ -25,6 +27,10 @@ urlpatterns = [
     url(r'^$', auth_views.LoginView.as_view(template_name='plateforme/login.html'), name='login'),
 
     url(r'^client_list/pdf/$', GeneratePDF.as_view(), name='pdf_client_list'),
+
+    url(r'^home/$', HomeView.as_view(), name='home'),
+    url(r'^api/chart/data/$', ChartData.as_view(), name='charts'),
+    url(r'^api/data/$', views.get_data, name='api-data'),
 
 
 
@@ -39,6 +45,16 @@ urlpatterns = [
     url(r'^client_delete/(?P<pk>[0-9]+)/$', views.client_delete, name='client_delete'),
     url(r'^client_search/$', FilterView.as_view(filterset_class=ClientFilter, 
         template_name='plateforme/client_search.html'), name='client_search'),
+
+
+    url(r'^password_reset/$', views.password_reset, name='password_reset'),
+    url(r'^password_reset/done/$',views.password_reset_done, name='password_reset_done'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.password_reset_confirm, name='password_reset_confirm'),
+    url(r'^reset/done/$', views.password_reset_complete, name='password_reset_complete'),
+
+
+
 
 
     url(r'^admin/', admin.site.urls),

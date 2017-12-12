@@ -27,6 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'babylonecorporation.pythonanywhere.com']
 
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'babylonecorporation'
+EMAIL_HOST_PASSWORD = 'QSwx1234'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Equipe Babylone Corp, inc <babylonecorporation@gmail.com>'
+
 
 # Application definition
 
@@ -37,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
 
     'django_filters',
 
