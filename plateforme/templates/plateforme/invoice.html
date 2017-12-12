@@ -1,63 +1,69 @@
-{% extends 'plateforme/base.html' %}
-
-
-{% block title %}LISTE CLIENTS{% endblock %}
-
-
-{% block content %}
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Etats<br>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="{% url 'plateforme:accueil' %}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-        <li class="active">Etats</li>
-      </ol>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="invoice">
+    <!-- title row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+          <i class="fa fa-globe"></i> BABI Corp, Inc.
+          <small class="pull-right">Date: {% now "jS F Y H:i" %}</small>
+        </h2>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+      <div class="col-md-4">
         
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Liste des Clients<a href="{% url 'plateforme:pdf_client_list' %}" class="pull-right"><ion class="fa fa-print"></ion></a></h3><br><br>
+        <address>
+          <strong>BABI Corp, Inc.</strong><br>
+          795 MONBOUET, Porte 14<br>
+          Gabon, Libreville<br>
+          Phone: (+241) 04435868<br>
+          Email: babylonecorporation@gmail.com
+        </address>
+      </div>
+      <!-- /.col -->
+      <div class="col-md-4">
+        <address>
+        </address>
+      </div>
+      <!-- /.col -->
+      <div class="col-md-4">
+      </div>
+      <!-- /.col -->
+    </div><br><br><br>
+    <!-- /.row -->
 
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+        <h1>Liste des Clients</h1>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div><br><br><br>
 
-                  <div class="input-group-btn">
-                    <a href="{% url 'plateforme:client_search' %}" class="btn btn-primary">
-                    <i class="fa fa-search"></i>  Recherche Un client</a>
-                  </div>
-                </div>
-              </div><br><br>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover table-stripped table-condensed table-bordered">
+    <!-- Table row -->
+    <div class="row">
+      <div class="col-xs-12 table-responsive">
+        <table class="table table-hover table-stripped table-condensed table-bordered">
                 <tr>
                   <th align="center">#</th>
-                  <th align="center">Photo</th>
                   <th align="center">Noms & Prénoms</th>
                   <th align="center">Sexe</th>
                   <th align="center">Date & Lieu_Naissance</th>
                   <!--th>Nom_du_Père</th>
                   <th>Nom_de_la_Mère</th-->
                   <th align="center">Profession</th>
-                  <th align="center">Statut_Matrimonial</th>
+                  <th align="center">Statut</th>
                   <!--th>Nom_Conjoint(e)</th-->
                   <!--th>Nbre_enfants</th-->
                   <!--th>Pays_d'Origine</th>
                   <th>Ville_d'Origine</th-->
                   <!--th>Ville_de_Résidence</th-->
-                  <th align="center">Lieu_de_Résidence</th>
+                  <th align="center">Résidence</th>
                   <!--th>Nationalité</th-->
                   <!--th align="center">Num_CNI</th-->
                   <!--th>CNI_Délivré_Par</th>
@@ -68,7 +74,6 @@
                   <th align="center">Arrivé_Au_GABON</th>
                   <!--th>Date_d'Ajout</th-->
                   <!--th>Ajouté_Par</th-->
-                  <th align="center">Action</th>
                 </tr>
                 {% for client in clients %}
                   <tr>
@@ -77,7 +82,6 @@
                        {{ client.id }} 
                       </a>
                     </td>
-                    <td align="center"><img src="{{ client.documents_url|default_if_none:'#' }}" class="img-circle" style="height: 15px; width: 15px;"></td>
                     <td align="center">
                         {{ client.nom|default_if_none:"" }} {{ client.prenom|default_if_none:"" }}
                     </td>
@@ -103,30 +107,23 @@
                     <td align="center">{{ client.date_arr_gab|default_if_none:"" }}</td> 
                     <!--td>{{ client.date_ajout }}</td-->
                     <!--td>{{ client.ajoute_par }}</td-->
-                    <td align="center">
+                    <!--td align="center">
                       <div class="btn-group" role="group" aria-label="...">
                         <a href="{% url 'plateforme:client_update' client.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                         <a href="{% url 'plateforme:client_delete' client.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                       </div>
-                    </td>
+                    </td-->
                   </tr>
                {% endfor %}
               </table><br>
-              <div class="box-footer">
-                <a href="{% url 'plateforme:client_create' %}" class="btn btn-primary">Ajouter</a>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
       </div>
-    </section>
-    <!-- /.content -->
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
 
+    
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
 </div>
-  <!-- /.content-wrapper -->
-
-{% endblock %}
-
-  
+<!-- ./wrapper -->

@@ -27,7 +27,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Client N°<a href="">{{ client.id }}</a><a href="" class="pull-right"><ion class="fa fa-print"></ion></a></h3><br><br>
+              <h3 class="box-title">Client N°<a href="">{{ client.id }}</a><a href="{% url 'plateforme:pdf_client_list' %}" class="pull-right"><ion class="fa fa-print"></ion></a></h3><br><br>
 
               <!--div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -55,16 +55,16 @@
             <div class="row">
                 <div class="col-md-4" align="center">
                   <h4>Noms & Prenoms:</h4>
-                  <p><a href="">{{ client.nom }} {{ client.prenom }}</a></p>
+                  <p><a href="">{{ client.nom|default_if_none:"" }} {{ client.prenom|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Sexe:</h4>
-                  <p><a href="">{{ client.sexe }}</a></p>
+                  <p><a href="">{{ client.sexe|default_if_none:"" }}</a></p>
                 </div>
 
                 <div class="col-md-4" align="center">
                   <h4>Date & Lieu de Naissance:</h4>
-                  <p><a href="">Né le {{ client.date_naissance }} à {{ client.lieu_naissance }}</a></p>
+                  <p><a href="">Né le {{ client.date_naissance|default_if_none:"" }} à {{ client.lieu_naissance|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Profession:</h4>
@@ -72,72 +72,72 @@
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Statut Matrimonial:</h4>
-                  <p><a href="">{{ client.statut }}</a></p>
+                  <p><a href="">{{ client.statut|default_if_none:"" }}</a></p>
                 </div>
 
                 <div class="col-md-4" align="center">
                   <h4>Nom du Père:</h4>
-                  <p><a href="">{{ client.pere }}</a></p>
+                  <p><a href="">{{ client.pere|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Nom de la Mère:</h4>
-                  <p><a href="">{{ client.mere }}</a></p>
+                  <p><a href="">{{ client.mere|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Nom de votre conjoint(e):</h4>
-                  <p><a href="">{{ client.conjoint }}</a></p>
+                  <p><a href="">{{ client.conjoint|default_if_none:"" }}</a></p>
                 </div>
 
                 <div class="col-md-4" align="center">
                   <h4>Nbre d'enfants:</h4>
-                  <p><a href="">{{ client.nbre_enfants }}</a></p>
+                  <p><a href="">{{ client.nbre_enfants|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Pays d'origine:</h4>
-                  <p><a href="">{{ client.pays_origine }}</a></p>
+                  <p><a href="">{{ client.pays_origine|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Ville d'origine:</h4>
-                  <p><a href="">{{ client.ville_origine }}</a></p>
+                  <p><a href="">{{ client.ville_origine|default_if_none:"" }}</a></p>
                 </div>
 
                 <div class="col-md-4" align="center">
                   <h4>Lieu de résidence:</h4>
-                  <p><a href="">{{ client.ville_residence }}</a></p>
+                  <p><a href="">{{ client.ville_residence|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Nationalité:</h4>
-                  <p><a href="">{{ client.nationalite }}</a></p>
+                  <p><a href="">{{ client.nationalite|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Numéro CNI:</h4>
-                  <p><a href="">{{ client.cni }}</a></p>
+                  <p><a href="">{{ client.cni|default_if_none:"" }}</a></p>
                 </div>
 
                 <div class="col-md-4" align="center">
                   <h4>Date de délivrance:</h4>
-                  <p><a href="">{{ client.date_cni }}</a></p>
+                  <p><a href="">{{ client.date_cni|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>CNI délivré par:</h4>
-                  <p><a href="">{{ client.cni_delivre_par }}</a></p>
+                  <p><a href="">{{ client.cni_delivre_par|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Numéro Passeport:</h4>
-                  <p><a href="">{{ client.passport }}</a></p>
+                  <p><a href="">{{ client.passport|default_if_none:"" }}</a></p>
                 </div>
 
                 <div class="col-md-4" align="center">
                   <h4>Date de délivrance:</h4>
-                  <p><a href="">{{ client.date_cni }}</a></p>
+                  <p><a href="">{{ client.date_cni|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Passeport délivré par:</h4>
-                  <p><a href="">{{ client.passp_delivre_par }}</a></p>
+                  <p><a href="">{{ client.passp_delivre_par|default_if_none:"" }}</a></p>
                 </div>
                 <div class="col-md-4" align="center">
                   <h4>Date de délivrance:</h4>
-                  <p><a href="">{{ client.date_passp }}</a></p>
+                  <p><a href="">{{ client.date_passp|default_if_none:"" }}</a></p>
                 </div>
 
             </div>

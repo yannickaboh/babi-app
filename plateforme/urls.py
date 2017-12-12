@@ -12,6 +12,8 @@ from plateforme import views
 from .filters import ClientFilter
 from django_filters.views import FilterView
 
+from .views import GeneratePDF
+
 app_name = 'plateforme'
 
 
@@ -21,6 +23,8 @@ urlpatterns = [
     url(r'^settings/account/$', accounts_views.UserUpdateView.as_view(), name='mon_compte'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^$', auth_views.LoginView.as_view(template_name='plateforme/login.html'), name='login'),
+
+    url(r'^client_list/pdf/$', GeneratePDF.as_view(), name='pdf_client_list'),
 
 
 
